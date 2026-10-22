@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Store Admin | Desmond Empire Jerseys</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body class="admin-body">
+  <header class="navbar admin-navbar">
+    <a href="index.html" class="brand" aria-label="Back to Desmond Empire Jerseys">
+      <img src="images/brand-mark.svg" alt="" class="brand-mark">
+      <span>DESMOND <b>EMPIRE</b></span>
+    </a>
+    <span class="admin-label">STORE ADMIN</span>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light mode">
+      <span aria-hidden="true">◐</span><span class="theme-label">Light mode</span>
+    </button>
+  </header>
+
+  <main class="admin-main">
+    <section class="admin-login" id="adminLoginSection">
+      <p class="eyebrow">PRIVATE STORE TOOLS</p>
+      <h1>Inventory &amp; <span>orders.</span></h1>
+      <p class="admin-intro">This page is for the shop owner, not customers. Use it to enter stock counts for each size and review or update incoming order requests.</p>
+      <ol class="admin-quick-guide">
+        <li>Enter the owner access code printed in the PowerShell window that started the shop server.</li>
+        <li>To update stock, open a jersey row, enter the quantity for each size, then choose <strong>Save Stock</strong>. Use <strong>0</strong> for sold out; leave blank if you are not tracking that size yet.</li>
+        <li>To process an order, open it and change its status. Confirming deducts tracked stock; cancelling a confirmed order returns it.</li>
+        <li>If you need to create a fresh access code, follow the <a href="ADMIN-SETUP.md" target="_blank" rel="noreferrer">admin setup steps</a>.</li>
+      </ol>
+      <form id="adminLoginForm" class="admin-login-form">
+        <label for="adminToken">Owner access code</label>
+        <input id="adminToken" type="password" autocomplete="current-password" required>
+        <button class="btn" type="submit">OPEN STORE TOOLS</button>
+      </form>
+      <p id="adminMessage" class="admin-message" aria-live="polite"></p>
+      <p class="admin-security-note">The server owner sets this private code when starting the backend. It stays in this browser tab and protects customer order details; never share or commit it.</p>
+    </section>
+
+    <section id="adminDashboard" class="admin-dashboard" hidden>
+      <div class="admin-page-heading">
+        <div>
+          <p class="eyebrow">STORE MANAGEMENT</p>
+          <h1>Inventory &amp; <span>orders.</span></h1>
+        </div>
+        <button class="text-button" id="adminSignOut" type="button">SIGN OUT</button>
+      </div>
+      <p id="dashboardMessage" class="admin-message" aria-live="polite"></p>
+
+      <section class="admin-how-to" aria-labelledby="adminHowToTitle">
+        <h2 id="adminHowToTitle">Quick guide</h2>
+        <ol>
+          <li>Open a product row. Enter how many you have in each size, then choose <strong>Save Stock</strong>.</li>
+          <li>Leave a size blank if you are not tracking it. Enter <strong>0</strong> if sold out.</li>
+          <li>Open an order under Recent orders to review the jersey, size, badge, customer, and delivery address.</li>
+          <li>Confirm only when ready; confirmation deducts stock. Mark it dispatched after sending, or completed when done. Cancelling a confirmed order restores stock.</li>
+        </ol>
+      </section>
+
+      <section class="admin-section" aria-labelledby="inventoryTitle">
+        <div class="admin-section-heading">
+          <div>
+            <p class="eyebrow">PRODUCTS</p>
+            <h2 id="inventoryTitle">Size-level stock</h2>
+          </div>
+          <button class="text-button" id="refreshAdmin" type="button">REFRESH</button>
+        </div>
+        <p class="admin-help">Blank means stock is not tracked. Enter a count, including 0 when sold out, then save the product.</p>
+        <div id="inventoryList" class="admin-inventory-list"></div>
+      </section>
+
+      <section class="admin-section" aria-labelledby="ordersTitle">
+        <div class="admin-section-heading">
+          <div>
+            <p class="eyebrow">WHATSAPP CHECKOUT REQUESTS</p>
+            <h2 id="ordersTitle">Recent orders</h2>
+          </div>
+        </div>
+        <div id="ordersList" class="admin-orders-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
